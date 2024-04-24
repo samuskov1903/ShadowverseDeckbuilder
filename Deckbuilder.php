@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="Da">
 <head>
     <title>Deckbuilder</title>
     <link rel="stylesheet" type="text/css" href="style.css">
