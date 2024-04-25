@@ -28,6 +28,9 @@ if ($result->num_rows > 0) {
         $deck_id = $row["Deck_ID"];
     }
 }
+if (isset($_GET['deck_id'])) {
+    $navn = $_GET['deckname'];
+}
 ?>
 <!DOCTYPE html>
 <html>
