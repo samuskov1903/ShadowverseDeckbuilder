@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 session_start();
 if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];}
+    $username = $_SESSION['username'];}
 ?>
 <!DOCTYPE html>
 <html lang="da">
