@@ -12,8 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 session_start();
-if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_SESSION['username'];}
+$username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="da">
