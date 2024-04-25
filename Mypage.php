@@ -12,7 +12,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 session_start();
-$username = $_SESSION['username'];
+$bruger_id = $_SESSION['bruger_id'];
+$sql = "SELECT Username FROM brugere WHERE Bruger_ID = '$bruger_id'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        $bruger_navn = $row["Username"];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="da">
@@ -20,8 +28,21 @@ $username = $_SESSION['username'];
 <head>
     <title>Opret_bruger</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <h1>My page</h1>
+    <br>
+    <h2> <?php
+    echo $bruger_navn;
+    ?> </h2>
+    <br>
+<h2> Your decks</h2>
     <?php
-    echo $username;
-    ?>
+    $sql = "SELECT * FROM decks WHERE Bruger_ID = '$bruger_id'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "Name: " . $row["Navn"]. "<br>";
+            }
+    }
+?>
 </head>
