@@ -21,4 +21,8 @@ if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password
 <head>
     <title>Opret_bruger</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <?php
+    echo $username;
+    ?>
 </head>
