@@ -29,7 +29,12 @@ if ($result->num_rows > 0) {
     }
 }
 if (isset($_GET['deck_id'])) {
-    $navn = $_GET['deckname'];
+    $deck_id = $_GET['deck_id'];
+
+    // Save the deck name in the session
+    if (isset($_GET['deckname'])) {
+        $_SESSION['deckname'] = $_GET['deckname'];
+    }
 }
 ?>
 <!DOCTYPE html>

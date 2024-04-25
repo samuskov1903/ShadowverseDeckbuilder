@@ -41,7 +41,10 @@ if ($result->num_rows > 0) {
     if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo "<a href='Deckbuilder.php?deck_id=".$row["Deck_ID"]."'>Name: " . $row["Navn"]. "</a><br>";
+                echo "<a href='Deckbuilder.php?deck_id=".$row["Deck_ID"]."&deckname=".$row["Navn"]."'>Name: " . $row["Navn"]. "</a><br>";
+                if (isset($_GET['deckname'])) {
+                    $_SESSION['deckname'] = $_GET['deckname'];
+}
             }
     }
 ?>
