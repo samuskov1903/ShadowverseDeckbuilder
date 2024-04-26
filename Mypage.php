@@ -12,8 +12,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 session_start();
-if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];}
+if (isset($_POST['Bruger_ID'])) {
+    $_SESSION['Bruger_ID'] = $_POST['Bruger_ID']; // Store the variable in the session
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="da">
@@ -21,4 +23,7 @@ if (isset($_POST['mail']) && isset($_POST['username']) && isset($_POST['password
 <head>
     <title>Opret_bruger</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <?php
+    $sql = "SELECT Bruger_ID FROM brugere where Bruger_ID = '$Bruger_ID'";
+jjjjjjjjj    ?>
 </head>

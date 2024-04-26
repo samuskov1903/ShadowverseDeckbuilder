@@ -12,7 +12,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 session_start();
-
+if (isset($_POST['Bruger_ID'])) {
+    $_SESSION['Bruger_ID'] = $_POST['Bruger_ID']; // Store the variable in the session
+}
 if(isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
