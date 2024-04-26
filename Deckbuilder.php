@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
                 echo "<br>";
             }
         } else {
-            echo "";
+            echo "No cards in deck.";
         }
         ?>
         <h2> Add cards</h2>
