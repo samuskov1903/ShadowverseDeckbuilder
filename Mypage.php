@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
                 if (isset($_GET['deckname'])) {
                     $_SESSION['deckname'] = $_GET['deckname'];
 }
-            }
+            }j
     }
 ?>
 </head>
