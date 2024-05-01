@@ -125,7 +125,7 @@ if (isset($_POST['remove_card'])) {
     }
 }
         ?>
-// Sebastians kode
+<!Sebastians kode>
         <h2> Recommended cards</h2>
         <?php
         $sql_deckid = $deck_id;

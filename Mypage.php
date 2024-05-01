@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 }
 session_start();
 $bruger_id = $_SESSION['bruger_id'];
-echo $bruger_id;
 $sql = "SELECT Username FROM brugere WHERE Bruger_ID = '$bruger_id'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
