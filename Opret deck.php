@@ -5,8 +5,7 @@ $password = ""; // no password
 $dbname = "shadowversedata";
 
 //test variables
-$bruger_id = 1;
- $_SESSION['bruger_id'] = $bruger_id;
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,6 +15,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 session_start();
+$bruger_id = $_SESSION['bruger_id'];
 if (isset($_POST['deckname'])) {
     $_SESSION['deckname'] = $_POST['deckname']; // Store the variable in the session
 }
