@@ -1,47 +1,53 @@
 <?php
+// Opretter forbindelse til databasen
 $servername = "localhost";
 $username = "samuskov";
-$password = ""; // no password
+$password = ""; // ingen adgangskode
 $dbname = "shadowversedata";
 
-// Create connection
+// Opretter forbindelse
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Tjekker forbindelsen
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Forbindelsen mislykkedes: " . $conn->connect_error);
 }
+// Starter en ny session
 session_start();
+
+// Tjekker om Bruger_ID er sat i POST
 if (isset($_POST['Bruger_ID'])) {
-    $_SESSION['Bruger_ID'] = $_POST['Bruger_ID']; // Store the variable in the session
+    $_SESSION['Bruger_ID'] = $_POST['Bruger_ID']; // Gemmer variablen i sessionen
 }
+
+// Tjekker om brugernavn og adgangskode er sat i POST
 if(isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // SQL query to check if email or username already exists
+    // SQL forespørgsel til at tjekke om e-mail eller brugernavn allerede findes
     $sql = "SELECT * FROM brugere WHERE Password = '$password' AND Username = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 0) {
-        // output message if user doesn't exist
-        echo "User doesn't exist";
+        // output besked hvis bruger ikke findes
+        echo "Bruger findes ikke";
     } else {
         $sql = "SELECT Bruger_ID FROM brugere WHERE Password = '$password' AND Username = '$username'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $bruger_id = $row['Bruger_ID'];
-            echo "User logged in successfully";
+            echo "Bruger logget ind succesfuldt";
             $_SESSION['bruger_id'] = $bruger_id;
             echo $bruger_id;
+            // Omdirigerer til Mypage.php
             header("Location: Mypage.php");
             exit;
         }
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="da">
@@ -54,11 +60,15 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 <body>
     <h1>Login</h1>
     <form method="POST">
-        <input type="text" name="username" placeholder="Username"> <br>
-        <input type="password" name="password" placeholder="Password"> <br>
+        <label>
+            <input type="text" name="username" placeholder="Username">
+        </label> <br>
+        <label>
+            <input type="password" name="password" placeholder="Password">
+        </label> <br>
         <input type="submit" value="Login" >
-        <p>Don't have an account? <a href="Opret_bruger.php">Create one here</a></p>
-
-
+        <p>Har du ikke en konto? <a href="Opret_bruger.php">Opret en her</a></p>
     </form>
 </body>
+
+</html>

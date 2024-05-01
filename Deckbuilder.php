@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
         if ($result->num_rows > 0) {
             // output data for hver række
             while($row = $result->fetch_assoc()) {
-                echo "id: " . $row["Kort_ID"]. " - Navn: " . $row["Navn"]. " - Type: " . $row["Type"].'&nbsp';
+                echo "Navn: " . $row["Navn"]. " - Type: " . $row["Type"].'&nbsp';
                 echo "<button type='submit' name='remove_card' value='".$row["Add_ID"]."'>REMOVE</button>";
                 echo "<br>";
             }
@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
         if ($result->num_rows > 0) {
             // output data for hver række
             while($row = $result->fetch_assoc()) {
-                echo "id: " . $row["Kort_ID"]. " - Navn: " . $row["Navn"]. " - Type: " . $row["Type"].'&nbsp';
+                echo "Navn: " . $row["Navn"]. " - Type: " . $row["Type"].'&nbsp';
                 echo "<button type='submit' name='add_card' value='".$row["Kort_ID"]."'>ADD</button>";
                 echo "<br>";
             }
