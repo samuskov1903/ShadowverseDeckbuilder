@@ -139,12 +139,16 @@ if (isset($_POST['remove_card'])) {
 
         $result_deck->close();
 
-        $sql_korttrait = "SELECT Kort_ID FROM kort_har_trait WHERE Trait_ID IN (SELECT Trait_ID FROM kort_har_trait WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende traits.
-        $sql_kortarc = "SELECT Kort_ID FROM kort_har_archetype WHERE Arc_ID IN (SELECT Arc_ID FROM kort_har_archetype WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende archetypes.
-        $sql_kortkey = "SELECT Kort_ID FROM keywords_i_kort WHERE Keyword_ID IN (SELECT Keyword_ID FROM keywords_i_kort WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende keywords.
+        $sql_korttrait = "SELECT Kort_ID FROM kort_har_trait WHERE Trait_ID IN (SELECT Trait_ID FROM kort_har_trait 
+                WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende traits.
+        $sql_kortarc = "SELECT Kort_ID FROM kort_har_archetype WHERE Arc_ID IN (SELECT Arc_ID FROM kort_har_archetype 
+            WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende archetypes.
+        $sql_kortkey = "SELECT Kort_ID FROM keywords_i_kort WHERE Keyword_ID IN (SELECT Keyword_ID FROM keywords_i_kort
+            WHERE Kort_ID IN (" . implode(",",$kort_ids) . "))"; // Finder alle kort med matchende keywords.
 
 
-        $sql_recommend = "SELECT Billede FROM kort WHERE Kort_ID IN ($sql_korttrait UNION $sql_kortarc UNION $sql_kortkey)";
+        $sql_recommend = "SELECT Billede FROM kort WHERE Kort_ID IN
+                               ($sql_korttrait UNION $sql_kortarc UNION $sql_kortkey)";
         $result_recommend = $conn->query($sql_recommend);
         $count = 0;
 
