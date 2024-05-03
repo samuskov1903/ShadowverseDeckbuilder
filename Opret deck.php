@@ -45,13 +45,7 @@ if(isset($_POST['deckname'])) {
                 $klasse_id = $row["Klasse_ID"];
             }
         } else {
-            echo "Ingen resultater";
-            exit;
-        }
-
-        // Tjekker om Klasse_ID er 0
-        if ($klasse_id == 0 and $deckname) {
-            echo "Fejl: Klasse_ID kan ikke være 0";
+            echo "Fejl: Klasse ikke fundet";
             exit;
         }
 
